@@ -1,4 +1,3 @@
-console.log('phone api');
 //load the phone's data
 const loadPhone = async(searchText)=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
@@ -52,11 +51,14 @@ const displayPhones = phones =>{
         // Step-4: append child
         phoneContainer.appendChild(phoneCard);
     });
+    //hide loading spinner
+    toggleLoadingSpinner(false);
 }
 
 // Handle search button 
 const handleSearch = () =>{
-    console.log('search button');
+    // console.log('search button');
+    toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
@@ -66,9 +68,20 @@ const handleSearch = () =>{
 }
 //handle search button 2 for taking the result of first input field to second input field 
 const handleSearch2 = () =>{
+    toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field2');
     const searchText = searchField.value;
     loadPhone(searchText);
 }
 
+//Loding spinner with toggle mode with a parameter
+const toggleLoadingSpinner= (isLoading) =>{
+    const loadingSpinner = document.getElementById('loader-div');
+    if(isLoading){
+        loadingSpinner.classList.remove('hidden');
+    }
+    else{
+        loadingSpinner.classList.add('hidden');
+    }
+}
 loadPhone();

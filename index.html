@@ -17,15 +17,24 @@
     </header>
     <main>
         <!-- Search phone section  -->
-        <section class="m-4 bg-gray-50 p-4 rounded">
-            <input id="search-field" type="text" placeholder="Search your phone..." class="input input-bordered w-full max-w-xs" />
-            <button onclick="handleSearch()" id="search-btn" class="pl-2 btn btn-accent">Search</button>
+        <section class="my-4 bg-gray-50 p-4 justify-around rounded flex flex-col md:flex-row">
+            <div class="flex flex-row gap-2">
+                <input id="search-field" type="text" placeholder="Search your phone..." class="input input-bordered w-full max-w-xs" />
+                <button onclick="handleSearch()" id="search-btn" class="pl-2 btn btn-accent">Search</button>
+            </div>
             <!-- Another search field  -->
-            <input id="search-field2" type="text" placeholder="Search here..." class="input input-bordered w-full max-w-xs" />
-            <button onclick="handleSearch2()" class="btn btn-active btn-primary">Search</button>
+            <div class="flex flex-row gap-2">
+                <input id="search-field2" type="text" placeholder="Search here..." class="input input-bordered w-full max-w-xs" />
+                <button onclick="handleSearch2()" class="btn btn-active btn-primary">Search</button>
+            </div>
         </section>
+        
         <!-- Search phone result  -->
         <section>
+            <!-- Spinner or loader  -->
+            <div id="loader-div" class="text-center mx-auto hidden">
+                <span class="loading text-blue-700 loading-dots loading-lg"></span>
+            </div>
             <div id="phone-container" class="grid grid-cols-1 lg:grid-cols-4 gap-4 md:grid-cols-2 mx-auto">
                 <!-- <div class="card w-96 bg-gray-200 shadow-xl">
                     <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
