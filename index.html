@@ -12,6 +12,12 @@
         <h1>Hunting Phone API</h1>
     </header>
     <main>
+        <!-- Search phone section  -->
+        <section class="m-4">
+            <input id="search-field" type="text" placeholder="Search your phone..." class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearch()" id="search-btn" class="pl-2 btn btn-accent">Search</button>
+        </section>
+        <!-- Search phone result  -->
         <section>
             <div id="phone-container" class="grid grid-cols-1 lg:grid-cols-4 gap-4 md:grid-cols-2 mx-auto">
                 <!-- <div class="card w-96 bg-gray-200 shadow-xl">

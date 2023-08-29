@@ -1,7 +1,7 @@
 console.log('phone api');
 //Get the phone's data
-const loadPhone = async()=>{
-    const res = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhone = async(searchText)=>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data
     //to print the data property from data
@@ -35,6 +35,14 @@ const displayPhones = phones =>{
         // Step-4: append child
         phoneContainer.appendChild(phoneCard);
     });
+}
+
+// Handle search button 
+const handleSearch = () =>{
+    console.log('search button');
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+    console.log(searchText);
 }
 
 loadPhone();
