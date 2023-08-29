@@ -1,35 +1,39 @@
 //load the phone's data
-const loadPhone = async(searchText)=>{
+const loadPhone = async(searchText, isShowAll)=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data
     //to print the data property from data
     // console.log(phones);
-    displayPhones(phones);
+    displayPhones(phones,isShowAll);
 }
 // Display phones
 //here phones is a parameter
-const displayPhones = phones =>{
+const displayPhones = (phones, isShowAll) =>{
     // console.log(phones);
     // Step-1: get the container where we will set the new created element
     const phoneContainer = document.getElementById('phone-container');
 
     //clear phone container cards before adding new cards
     phoneContainer.textContent = '';
-
-    // console.log(phones.length)
+    console.log("Is show all: ",isShowAll);
+    console.log(phones.length);
     //Count the total number of phones
     const phoneCount = phones.length;
     const showAllContainer = document.getElementById('show-all-container');
-    if(phoneCount > 10){
+    if(phoneCount > 12 && !isShowAll){
         //then show the show all button
+        console.log('length is too big!');
         showAllContainer.classList.remove('hidden');
     }
     else{
         showAllContainer.classList.add('hidden');
+        // isShowAll = false;
     }
-    // display only first 10 phones 
-    phones = phones.slice(0,10);
+    // display only first 12 phones if not show all
+    if(isShowAll != true){
+        phones = phones.slice(0,12);
+    }
     //Show data of each phone
     phones.forEach(phone => {
         console.log(phone);
@@ -56,15 +60,15 @@ const displayPhones = phones =>{
 }
 
 // Handle search button 
-const handleSearch = () =>{
+const handleSearch = (isShowAll) =>{
     // console.log('search button');
     toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
     //calling loadphone function
-    loadPhone(searchText);
-    searchField.value = '';
+    loadPhone(searchText,isShowAll);
+    // searchField.value = '';
 }
 //handle search button 2 for taking the result of first input field to second input field 
 const handleSearch2 = () =>{
@@ -84,4 +88,11 @@ const toggleLoadingSpinner= (isLoading) =>{
         loadingSpinner.classList.add('hidden');
     }
 }
-loadPhone();
+
+//handle show all button click
+const handleShowAll = () =>{
+    console.log('hello');
+    handleSearch(true);
+}
+
+// loadPhone();
