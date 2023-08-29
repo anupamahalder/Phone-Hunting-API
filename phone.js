@@ -1,5 +1,5 @@
 console.log('phone api');
-//Get the phone's data
+//load the phone's data
 const loadPhone = async(searchText)=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
@@ -14,6 +14,23 @@ const displayPhones = phones =>{
     // console.log(phones);
     // Step-1: get the container where we will set the new created element
     const phoneContainer = document.getElementById('phone-container');
+
+    //clear phone container cards before adding new cards
+    phoneContainer.textContent = '';
+
+    // console.log(phones.length)
+    //Count the total number of phones
+    const phoneCount = phones.length;
+    const showAllContainer = document.getElementById('show-all-container');
+    if(phoneCount > 10){
+        //then show the show all button
+        showAllContainer.classList.remove('hidden');
+    }
+    else{
+        showAllContainer.classList.add('hidden');
+    }
+    // display only first 10 phones 
+    phones = phones.slice(0,10);
     //Show data of each phone
     phones.forEach(phone => {
         console.log(phone);
@@ -43,6 +60,15 @@ const handleSearch = () =>{
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
+    //calling loadphone function
+    loadPhone(searchText);
+    searchField.value = '';
+}
+//handle search button 2 for taking the result of first input field to second input field 
+const handleSearch2 = () =>{
+    const searchField = document.getElementById('search-field2');
+    const searchText = searchField.value;
+    loadPhone(searchText);
 }
 
 loadPhone();

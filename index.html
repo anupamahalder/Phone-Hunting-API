@@ -9,13 +9,20 @@
 </head>
 <body>
     <header>
-        <h1>Hunting Phone API</h1>
+        <div class="w-full flex flex-row align-middle justify-between content-around p-8">
+            <div><h1 class="5xl font-bold">Cool Gadgets</h1></div>
+            <div><button class="btn btn-primary">Sign Up</button></div>
+        </div>
+
     </header>
     <main>
         <!-- Search phone section  -->
-        <section class="m-4">
+        <section class="m-4 bg-gray-50 p-4 rounded">
             <input id="search-field" type="text" placeholder="Search your phone..." class="input input-bordered w-full max-w-xs" />
             <button onclick="handleSearch()" id="search-btn" class="pl-2 btn btn-accent">Search</button>
+            <!-- Another search field  -->
+            <input id="search-field2" type="text" placeholder="Search here..." class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearch2()" class="btn btn-active btn-primary">Search</button>
         </section>
         <!-- Search phone result  -->
         <section>
@@ -30,6 +37,10 @@
                       </div>
                     </div>
                 </div> -->
+            </div>
+            <!-- Show all buttons  -->
+            <div id="show-all-container" class="w-full mx-auto hidden">
+                <button class="btn btn-accent">Show All</button>
             </div>
         </section>
     </main>
