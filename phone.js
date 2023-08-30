@@ -46,9 +46,9 @@ const displayPhones = (phones, isShowAll) =>{
             <figure><img src=${phone.image} alt="phone" /></figure>
             <div class="card-body">
             <h2 class="card-title">${phone.phone_name}</h2>
-            <p>Get the best phone now</p>
+            <p>Grab the best phone available now for you!</p>
             <div class="">
-                <button class="btn btn-primary mx-auto">Show Details</button>
+                <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary mx-auto">Show Details</button>
             </div>
             </div>
         `
@@ -57,6 +57,16 @@ const displayPhones = (phones, isShowAll) =>{
     });
     //hide loading spinner
     toggleLoadingSpinner(false);
+}
+//Handle show details
+const handleShowDetails = async(id) =>{
+    console.log('clicked show details',id);
+    // load the single phone data 
+    //we will wait for response while fetching the details use backtick
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    //convert the response into json
+    const data = await res.json();
+    console.log(data);
 }
 
 // Handle search button 
