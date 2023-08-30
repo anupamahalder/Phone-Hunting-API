@@ -80,14 +80,14 @@ const showPhoneDetails = (phone) =>{
         <div class="text-gray-500">
             <h3 id="phone-name" class="font-bold text-black text-3xl">${phone.name}</h3>
             <p class="py-4">The product is sustainable and gives you more valueable features that fulfil all your needs with budget.</p>
-            <p class="pb-2"><span class="font-bold text-black">Storage: </span>${phone?.mainFeatures?.storage}</p>
-            <p class="pb-2"><span class="font-bold text-black">Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
-            <p class="pb-2"><span class="font-bold text-black">Chipset: </span>${phone?.mainFeatures?.chipSet}</p>
-            <p class="pb-2"><span class="font-bold text-black">Memory: </span>${phone?.mainFeatures?.memory}</p>
-            <p class="pb-2"><span class="font-bold text-black">Slug: </span>${phone?.slug}</p>
-            <p class="pb-2"><span class="font-bold text-black">Release data: </span>${phone?.releaseDate}</p>
-            <p class="pb-2"><span class="font-bold text-black">Brand: </span>${phone?.brand}</p>
-            <p class="pb-2"><span class="font-bold text-black">GPS: </span>${phone?.others?.GPS}</p>
+            <p class="pb-2"><span class="font-bold text-black">Storage: </span>${phone?.mainFeatures?.storage || 'No storage information available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">Display Size: </span>${phone?.mainFeatures?.displaySize || 'No display size available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">Chipset: </span>${phone?.mainFeatures?.chipSet || 'No chipset available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">Memory: </span>${phone?.mainFeatures?.memory|| "No Memory's information available"}</p>
+            <p class="pb-2"><span class="font-bold text-black">Slug: </span>${phone?.slug || 'No slug available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">Release data: </span>${phone?.releaseDate || 'Not available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">Brand: </span>${phone?.brand ||'No Brand available'}</p>
+            <p class="pb-2"><span class="font-bold text-black">GPS: </span>${phone?.others?.GPS || 'No GPS available'}</p>
         </div>
     `
     //show the modal
