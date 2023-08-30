@@ -84,10 +84,10 @@ const showPhoneDetails = (phone) =>{
             <p class="pb-2"><span class="font-bold text-black">Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
             <p class="pb-2"><span class="font-bold text-black">Chipset: </span>${phone?.mainFeatures?.chipSet}</p>
             <p class="pb-2"><span class="font-bold text-black">Memory: </span>${phone?.mainFeatures?.memory}</p>
-            <p class="pb-2"><span class="font-bold text-black">Slug: </span>${phone?.mainFeatures?.slug}</p>
-            <p class="pb-2"><span class="font-bold text-black">Release data: </span>${phone?.mainFeatures?.releaseDate}</p>
-            <p class="pb-2"><span class="font-bold text-black">Brand: </span>${phone?.mainFeatures?.brand}</p>
-            <p class="pb-2"><span class="font-bold text-black">GPS: </span>${phone?.mainFeatures.gps}</p>
+            <p class="pb-2"><span class="font-bold text-black">Slug: </span>${phone?.slug}</p>
+            <p class="pb-2"><span class="font-bold text-black">Release data: </span>${phone?.releaseDate}</p>
+            <p class="pb-2"><span class="font-bold text-black">Brand: </span>${phone?.brand}</p>
+            <p class="pb-2"><span class="font-bold text-black">GPS: </span>${phone?.others?.GPS}</p>
         </div>
     `
     //show the modal
