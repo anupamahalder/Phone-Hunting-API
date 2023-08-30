@@ -1,5 +1,5 @@
 //load the phone's data
-const loadPhone = async(searchText, isShowAll)=>{
+const loadPhone = async(searchText="apple", isShowAll)=>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data
@@ -17,13 +17,13 @@ const displayPhones = (phones, isShowAll) =>{
     //clear phone container cards before adding new cards
     phoneContainer.textContent = '';
     console.log("Is show all: ",isShowAll);
-    console.log(phones.length);
+    // console.log(phones.length);
     //Count the total number of phones
     const phoneCount = phones.length;
     const showAllContainer = document.getElementById('show-all-container');
     if(phoneCount > 12 && !isShowAll){
         //then show the show all button
-        console.log('length is too big!');
+        // console.log('length is too big!');
         showAllContainer.classList.remove('hidden');
     }
     else{
@@ -66,7 +66,32 @@ const handleShowDetails = async(id) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     //convert the response into json
     const data = await res.json();
-    console.log(data);
+    const phone = data.data;
+    // console.log(phone);
+    //call the show phone details function
+    showPhoneDetails(phone);
+}
+//show phone details function with parameter of phone information
+const showPhoneDetails = (phone) =>{
+    console.log(phone);
+    const showDetailsContainer = document.getElementById('show_details_container');
+    showDetailsContainer.innerHTML = `
+        <img class="mx-auto p-4" src="${phone.image}" alt="">
+        <div class="text-gray-500">
+            <h3 id="phone-name" class="font-bold text-black text-3xl">${phone.name}</h3>
+            <p class="py-4">The product is sustainable and gives you more valueable features that fulfil all your needs with budget.</p>
+            <p class="pb-2"><span class="font-bold text-black">Storage: </span>${phone?.mainFeatures?.storage}</p>
+            <p class="pb-2"><span class="font-bold text-black">Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
+            <p class="pb-2"><span class="font-bold text-black">Chipset: </span>${phone?.mainFeatures?.chipSet}</p>
+            <p class="pb-2"><span class="font-bold text-black">Memory: </span>${phone?.mainFeatures?.memory}</p>
+            <p class="pb-2"><span class="font-bold text-black">Slug: </span>${phone?.mainFeatures?.slug}</p>
+            <p class="pb-2"><span class="font-bold text-black">Release data: </span>${phone?.mainFeatures?.releaseDate}</p>
+            <p class="pb-2"><span class="font-bold text-black">Brand: </span>${phone?.mainFeatures?.brand}</p>
+            <p class="pb-2"><span class="font-bold text-black">GPS: </span>${phone?.mainFeatures.gps}</p>
+        </div>
+    `
+    //show the modal
+    show_details_modal.showModal();
 }
 
 // Handle search button 
@@ -105,4 +130,4 @@ const handleShowAll = () =>{
     handleSearch(true);
 }
 
-// loadPhone();
+loadPhone();
